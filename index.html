@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <title>ATOM Editor</title>
+  <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  
+
+  <!-- Compressed version - Production mode -->
+  <script src="blockly_compressed.js"></script>
+  <script src="blocks_compressed.js"></script>
+  <script src="atom_compressed.js"></script>
+
+  <!-- Uncompressed version - Tester mode -->
+  <!--<script src="../../blockly_uncompressed.js"></script>
+  <script src="../../blocks/base.js"></script>
+  <script src="../../blocks/colour.js"></script>
+  <script src="../../blocks/lists.js"></script>
+  <script src="../../blocks/logic.js"></script>
+  <script src="../../blocks/loops.js"></script>
+  <script src="../../blocks/math.js"></script>
+  <script src="../../blocks/procedures.js"></script>
+  <script src="../../blocks/text.js"></script>
+  <script src="../../blocks/variables.js"></script>
+
+  <script src="../../generators/atom.js"></script>
+  <script src="../../generators/atom/base.js"></script>
+  <script src="../../generators/atom/control.js"></script>
+  <script src="../../generators/atom/logic.js"></script>
+  <script src="../../generators/atom/math.js"></script>
+  <script src="../../generators/atom/procedures.js"></script>
+  <script src="../../generators/atom/text.js"></script>
+  <script src="../../generators/atom/variables.js"></script>-->
+
+
+  <script type="text/javascript">
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  <!-- Controller -->
+  <script src="code.js"></script>
+
+  
+</head>
+<body>
+
+  <table width="100%" height="92%">
+    <tr>
+      <td>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand font-weight-bold" href="">ATOM</a>
+          </nav>
+      </td>
+      <td class="farSide">
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">            
+            <td id="tab_blocks" class="tabon">
+              <p class="">BLOCKS</p>
+            </td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_atom" class="taboff">
+              <p class="">ATOM Code</p>
+            </td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_xml" class="taboff">
+              <p class="">XLM</p>
+            </td>
+            <td class="tabmax">
+              <button id="exampleOneButton" class="btn btn-outline-primary button-box" data-toggle="tooltip" data-placement="bottom" title="Rutina de LEDs">
+                DEMO 1 
+              </button>
+              <button id="exampleTwoButton" class="btn btn-outline-success button-box" data-toggle="tooltip" data-placement="bottom" title="Combinar colores">
+                DEMO 2
+              </button>
+              <button id="exampleThreeButton" class="btn btn-outline-primary button-box" data-toggle="tooltip" data-placement="bottom" title="Generar tonos análogos">
+                DEMO 3
+              </button>
+              <button id="exampleFourButton" class="btn btn-outline-success button-box" data-toggle="tooltip" data-placement="bottom" title="Sensor de luz | Prender luz">
+                DEMO 4
+              </button>
+              <button id="trashButton" class="btn btn-danger button-box" data-toggle="tooltip" data-placement="bottom" title="Borrar bloques">
+                <i class="fa fa-trash-o"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_atom" class="content"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+
+  <xml id="toolbox">
+    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+    </category>
+    <category name="Input/Output" colour="230">
+      <block type="inout_highlow"></block>
+      <block type="inout_digital_write"></block>
+      <block type="inout_digital_read"></block>
+      <block type="inout_analog_write">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+      <block type="inout_analog_read"></block>
+      <block type="serial_print">
+        <value name="CONTENT">
+          <block type="text">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+      </block>
+      <block type="inout_tone">
+        <value name="NUM">
+          <block type="math_number">
+            <field name="NUM">440</field>
+          </block>
+        </value>
+      </block>
+      <block type="inout_notone"></block>
+      <block type="led_rgb"></block>
+    </category>
+    <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}"></category>
+    <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+      <block type="base_delay">
+        <value name="DELAY_TIME">
+          <block type="math_number">
+            <field name="NUM">1000</field>
+          </block>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+          <value name="FROM">
+            <block type="math_number">
+              <field name="NUM">1</field>
+            </block>
+          </value>
+          <value name="TO">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+      <block type="math_number"></block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="base_map">
+          <value name="DMAX">
+            <block type="math_number">
+              <field name="NUM">180</field>
+            </block>
+          </value>
+        </block>
+    </category>
+  </xml>
+
+  <div class="card-footer text-muted">
+    <p class="text-footer">Made with <i class="fa fa-heart red-heart" aria-hidden="true"></i> in Colombia. Powered by tdrobótica.co</p>
+  </div>
+
+</body>
+</html>
