@@ -70,10 +70,10 @@ Code.getStringParamFromUrl = function(name, defaultValue) {
  * @return {string} User's language.
  */
 Code.getLang = function() {
-  var lang = Code.getStringParamFromUrl('lang', 'en');
+  var lang = Code.getStringParamFromUrl('lang', 'es');
   if (Code.LANGUAGE_NAME[lang] === undefined) {
     // Default to English.
-    lang = 'en';
+    lang = 'es';
   }
   return lang;
 };
@@ -341,7 +341,7 @@ Code.init = function() {
 
   Code.workspace = Blockly.inject('content_blocks',
       {grid:false, 
-       media: 'media/',
+       media: '../../media/',
        rtl: rtl,
        toolbox: toolboxXml,
        css: true,
@@ -509,6 +509,6 @@ Code.discard = function() {
 // Load the Code demo's language strings.
 document.write('<script src="msg/' + Code.LANG + '.js"></script>\n');
 // Load Blockly's language strings.
-document.write('<script src="msg/js/' + Code.LANG + '.js"></script>\n');
+document.write('<script src="../../msg/js/' + Code.LANG + '.js"></script>\n');
 
 window.addEventListener('load', Code.init);

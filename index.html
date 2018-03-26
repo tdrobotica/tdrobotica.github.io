@@ -7,7 +7,8 @@
   <link rel="shortcut icon" type="image/png" href="favicon.ico"/>
 
   <!-- Styles -->
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
@@ -19,12 +20,12 @@
   
 
   <!-- Compressed version - Production mode -->
-  <script src="blockly_compressed.js"></script>
-  <script src="blocks_compressed.js"></script>
-  <script src="atom_compressed.js"></script>
+  <script src="../../blockly_compressed.js"></script>
+  <script src="../../blocks_compressed.js"></script>
+  <script src="../../atom_compressed.js"></script>
 
   <!-- Uncompressed version - Tester mode -->
-  <!--<script src="../../blockly_uncompressed.js"></script>
+  <!-- <script src="../../blockly_uncompressed.js"></script>
   <script src="../../blocks/base.js"></script>
   <script src="../../blocks/colour.js"></script>
   <script src="../../blocks/lists.js"></script>
@@ -42,7 +43,7 @@
   <script src="../../generators/atom/math.js"></script>
   <script src="../../generators/atom/procedures.js"></script>
   <script src="../../generators/atom/text.js"></script>
-  <script src="../../generators/atom/variables.js"></script>-->
+  <script src="../../generators/atom/variables.js"></script>    -->
 
 
   <script type="text/javascript">
@@ -52,7 +53,7 @@
   </script>
 
   <!-- Controller -->
-  <script src="code.js"></script>
+  <script src="code.js"></script> 
 
   
 </head>
@@ -62,7 +63,7 @@
     <tr>
       <td>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand font-weight-bold" href="">ATOM Editor</a>
+          <a class="navbar-brand font-weight-bold" href="">ATOM</a>
           </nav>
       </td>
       <td class="farSide">
@@ -114,17 +115,20 @@
   <textarea id="content_xml" class="content" wrap="off"></textarea>
 
   <xml id="toolbox">
-    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+    <category name="%{BKY_CATLOGIC}" colour="#FFA000">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
       <block type="logic_boolean"></block>
     </category>
-    <category name="Input/Output" colour="230">
+    <category name="%{BKY_CATINPUTS}" colour="#F44336">
       <block type="inout_highlow"></block>
-      <block type="inout_digital_write"></block>
       <block type="inout_digital_read"></block>
+      <block type="inout_analog_read"></block>
+    </category>
+    <category name="%{BKY_CATOUTPUTS}" colour="#29B6F6">
+      <block type="inout_digital_write"></block>
       <block type="inout_analog_write">
         <value name="NUM">
           <block type="math_number">
@@ -132,7 +136,6 @@
           </block>
         </value>
       </block>
-      <block type="inout_analog_read"></block>
       <block type="serial_print">
         <value name="CONTENT">
           <block type="text">
@@ -147,11 +150,9 @@
           </block>
         </value>
       </block>
-      <block type="inout_notone"></block>
       <block type="led_rgb"></block>
     </category>
-    <category name="Variables" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}"></category>
-    <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+    <category name="%{BKY_CATLOOPS}" colour="#8BC34A">
       <block type="base_delay">
         <value name="DELAY_TIME">
           <block type="math_number">
@@ -173,7 +174,8 @@
           </value>
       </block>
     </category>
-    <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+    <category name="Variables" custom="VARIABLE" colour="#4DB6AC"></category>
+    <category name="%{BKY_CATMATH}" colour="#9C27B0">
       <block type="math_number"></block>
       <block type="math_arithmetic">
         <value name="A">
@@ -198,7 +200,7 @@
   </xml>
 
   <div class="card-footer text-muted">
-    <p class="text-footer">Made with <i class="fa fa-heart red-heart" aria-hidden="true"></i> in Colombia. Powered by tdrobótica.co</p>
+      <p class="text-footer">Made with <i class="fa fa-heart red-heart" aria-hidden="true"></i> in Colombia. Powered by tdrobótica.co</p>
   </div>
 
 </body>

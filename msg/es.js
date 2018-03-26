@@ -7,6 +7,8 @@ var MSG = {
   timeout: "Se excedio el máximo de iteraciones ejecutadas permitidas.",
   trashTooltip: "Descartar todos los bloques.",
   catLogic: "Lógica",
+  catInputs: "Entradas",
+  catOutputs: "Salidas",
   catLoops: "Secuencias",
   catMath: "Matemáticas",
   catText: "Texto",
